@@ -18,11 +18,15 @@ let index
 
 switch (vetor){
     case '1':
-        const nome = prompt('nome: ');
-        const telefone = prompt('telefone: ');
-        const email = prompt('email:')
-        addUsuario({nome, telefone, email})
-        console.log('adicionado')
+        const nome = prompt('Nome: ');
+        let telefones = [];
+        let telefone;
+        while ((telefone = prompt('Telefone (ou deixe em branco para sair): '))) {
+            telefones.push(telefone);
+        }
+        const email = prompt('Email: ');
+        addUsuario({ nome, telefones, email });   
+        console.log('Contato adicionado com sucesso!');
         menu();
         break;
     case '2':
@@ -31,7 +35,7 @@ switch (vetor){
         break
     case '3':
         listarUsuario()
-        id = parseInt(prompt('numero para atualizar')) -1
+        id = parseInt(prompt('numero para atualizar'))
         const novoNome = prompt('nome: ')
         const novoTelefone = prompt('telefone: ')
         const novoEmail = prompt('email')
@@ -41,7 +45,7 @@ switch (vetor){
         break
     case '4':
         listarUsuario()
-        id = parseInt(prompt('deletar')) -1
+        id = parseInt(prompt('deletar'))
         removerUsuario(id)
         console.log("removido")
         menu()
