@@ -14,7 +14,6 @@ function menu(){
     5. sair
 `)
 let vetor = prompt('qual opçao')
-let index
 
 switch (vetor){
     case '1':
@@ -37,16 +36,21 @@ switch (vetor){
         listarUsuario()
         id = parseInt(prompt('numero para atualizar'))
         const novoNome = prompt('nome: ')
-        const novoTelefone = prompt('telefone: ')
+        let novoTelefones = []
+        let novoTelefone 
+        while((novoTelefone = prompt('novo telefone:'))){
+            novoTelefones.push(novoTelefone)
+        }
         const novoEmail = prompt('email')
-        atualizarUsuario(id, {nome: novoNome, telefone: novoTelefone, email: novoEmail})
+        atualizarUsuario(id, {nome: novoNome, telefones: novoTelefones, email: novoEmail})
         console.log('atualizado')
         menu()
         break
     case '4':
         listarUsuario()
         id = parseInt(prompt('deletar'))
-        removerUsuario(id)
+        let confirmacao = prompt('tem certeza? sim/nao')
+        removerUsuario(id, confirmacao)
         console.log("removido")
         menu()
         break
